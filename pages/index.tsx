@@ -6,6 +6,8 @@ import Date from '../components/date'
 
 import { getSortedPostsData } from '../lib/posts'
 
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
@@ -39,7 +41,7 @@ export default function Home({ allPostsData }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async context => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
